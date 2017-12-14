@@ -23,12 +23,12 @@ templates:
 
 # actions must be named after an utterance or specified in a file
 actions:
-  - action.ActionGreet
-  - action.ActionGoodbye
+  - weather.action.ActionGreet
+  - weather.action.ActionGoodbye
   - utter_default
-  - action.ActionAskHowCanIHelp
-  - action.ActionOnIt
-  - action.ActionAskLocation
-  - action.ActionAckDoSearch
-  - action.ActionAskHelpMore
-  - action.ActionSearchWeather
+  - weather.action.ActionAskHowCanIHelp
+  - weather.action.ActionOnIt
+  - weather.action.ActionAskLocation
+  - weather.action.ActionAckDoSearch
+  - weather.action.ActionAskHelpMore
+  - weather.action.ActionSearchWeather

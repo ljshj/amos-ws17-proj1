@@ -42,7 +42,7 @@ if __name__ == '__main__':
     #train nlu
     #model_path = train_nlu()
     #train dialogue
-    topic = ""
+    topic = "weather/"
     #dialogue_path = train_dialogue(topic)
 
     model_path = "models/nlu/default/current"
@@ -50,7 +50,21 @@ if __name__ == '__main__':
 
     #parse user input
     interpreter = load_interpreter(model_path)
-    nlu_jsonResponse = interpreter.parse("What will the weather be in Berlin?") # should return the same dict as the HTTP api would (without emulation).
+    nlu_jsonResponse = interpreter.parse("What will the weather be next Tuesday?") # should return the same dict as the HTTP api would (without emulation).
+
+    entities = []
+
+    if len(nlu_jsonResponse['entities']) > 0:
+
+        for e in nlu_jsonResponse['entities']:
+            entity = e['entity'] + "=" + e['value']
+            entities.append(entity)
+
+    #handle user input
+    agent = load_agent(dialogue_path)
+    print agent.handle_message('_' + nlu_jsonResponse['intent']['name'] + '[' + ','.join(map(str,entities)) + ']')
+
+    nlu_jsonResponse = interpreter.parse("in Berlin") # should return the same dict as the HTTP api would (without emulation).
 
     entities = []
 
