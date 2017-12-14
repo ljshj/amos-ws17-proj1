@@ -1,8 +1,26 @@
 from __future__ import unicode_literals
 
+import argparse
+
 domain_file_path = '/domain.yml'
 dialogue_model_path = '/models/dialogue'
 stories_file_path = '/data/stories.md'
+
+def create_argument_parser():
+    """Parse all the command line arguments for the run script."""
+
+    parser = argparse.ArgumentParser(
+        description='starts the bot')
+    parser.add_argument(
+        '-d', '--dialogues',
+        required=True,
+        type=str,
+        help="dialogues to load")
+
+    return parser
+
+def parse_dialogue_argument(argument):
+    return argument.split('+')
 
 def train_nlu():
     from rasa_nlu.config import RasaNLUConfig
@@ -36,6 +54,8 @@ def train_models(topics):
         train_dialogue(topic)
 
 if __name__ == '__main__':
-    topics = ['weather']
+    arg_parser = create_argument_parser()
+    args = arg_parser.parse_args()
+    topics = parse_dialogue_argument(args.dialogues)
 
     train_models(topics)

@@ -72,8 +72,6 @@ if __name__ == '__main__':
     arg_parser = create_argument_parser()
     args = arg_parser.parse_args()
 
-
-
     interpreter = load_interpreter()
     topics = parse_dialogue_argument(args.dialogues)
     agents = load_agents(topics)
