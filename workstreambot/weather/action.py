@@ -34,9 +34,6 @@ class ActionSearchWeather(Action):
 
            data['response'] = description + '\nCondition: ' + conditionDesc + '\nThe currrent temperature is ' + conditionTemp + ' degree\nLast updated ' + conditionDate
            data['slots'] = tracker.current_slot_values()
-           data['sender'] = tracker.sender_id
-           data['message'] = tracker.latest_message.parse_data
-           data['paused'] = tracker.is_paused()
         else:
            date = datetime.strptime(date, '%Y-%m-%dT%H:%M:%S.%fZ')
            for num in range(0, len(weather.getWeatherForecastFactors())):
@@ -51,9 +48,6 @@ class ActionSearchWeather(Action):
 
                  data['response'] = description + ' on ' + forecastDate + '\nCondition: ' + forecastDesc + '\nThe temperature is between ' + forecastLow + ' and ' + forecastHigh + ' degree'
                  data['slots'] = tracker.current_slot_values()
-                 data['sender'] = tracker.sender_id
-                 data['message'] = tracker.latest_message.parse_data
-                 data['paused'] = tracker.is_paused()
 
         dispatcher.utter_message(json.dumps(data))
         return []
@@ -69,9 +63,6 @@ class ActionGreet(Action):
 
         data['response'] = 'Hey there!'
         data['slots'] = tracker.current_slot_values()
-        data['sender'] = tracker.sender_id
-        data['message'] = tracker.latest_message.parse_data
-        data['paused'] = tracker.is_paused()
 
         dispatcher.utter_message(json.dumps(data))
         return []
@@ -87,9 +78,6 @@ class ActionGoodbye(Action):
 
         data['response'] = 'Aloha'
         data['slots'] = tracker.current_slot_values()
-        data['sender'] = tracker.sender_id
-        data['message'] = tracker.latest_message.parse_data
-        data['paused'] = tracker.is_paused()
 
         dispatcher.utter_message(json.dumps(data))
         return []
@@ -105,9 +93,6 @@ class ActionAskHowCanIHelp(Action):
 
         data['response'] = 'How can I help you?'
         data['slots'] = tracker.current_slot_values()
-        data['sender'] = tracker.sender_id
-        data['message'] = tracker.latest_message.parse_data
-        data['paused'] = tracker.is_paused()
 
         dispatcher.utter_message(json.dumps(data))
         return []
@@ -123,9 +108,6 @@ class ActionOnIt(Action):
 
         data['response'] = "I'm on it!"
         data['slots'] = tracker.current_slot_values()
-        data['sender'] = tracker.sender_id
-        data['message'] = tracker.latest_message.parse_data
-        data['paused'] = tracker.is_paused()
 
         dispatcher.utter_message(json.dumps(data))
         return []
@@ -141,9 +123,6 @@ class ActionAskLocation(Action):
 
         data['response'] = "Please enter the city you're interested in."
         data['slots'] = tracker.current_slot_values()
-        data['sender'] = tracker.sender_id
-        data['message'] = tracker.latest_message.parse_data
-        data['paused'] = tracker.is_paused()
 
         dispatcher.utter_message(json.dumps(data))
         return []
@@ -159,9 +138,6 @@ class ActionAckDoSearch(Action):
 
         data['response'] = "Ok let me see what I can find."
         data['slots'] = tracker.current_slot_values()
-        data['sender'] = tracker.sender_id
-        data['message'] = tracker.latest_message.parse_data
-        data['paused'] = tracker.is_paused()
 
         dispatcher.utter_message(json.dumps(data))
         return []
@@ -177,9 +153,6 @@ class ActionAskHelpMore(Action):
 
         data['response'] = "Is there anything more that I can help with?"
         data['slots'] = tracker.current_slot_values()
-        data['sender'] = tracker.sender_id
-        data['message'] = tracker.latest_message.parse_data
-        data['paused'] = tracker.is_paused()
 
         dispatcher.utter_message(json.dumps(data))
         return []
